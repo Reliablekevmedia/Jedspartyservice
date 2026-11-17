@@ -8,12 +8,10 @@ import Martini from './Martini.astro';
 interface Props {
   title?: string;
   accent?: string;
-  lede?: string;
 }
 const {
   title = 'Make it a party',
   accent = 'to remember.',
-  lede = 'Tell us about your event and we’ll be in touch to talk it through. Please call anytime.',
 } = Astro.props;
 ---
 
@@ -23,7 +21,6 @@ const {
   <div class="wrap wrap--narrow">
     <div class="divider reveal" aria-hidden="true"><Martini /></div>
     <h2 id="cta-title" class="reveal">{title} <em>{accent}</em></h2>
-    <p class="lede reveal" data-delay="1">{lede}</p>
     <a class="cta__phone reveal" data-delay="1" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>
     <div class="btn-row reveal" data-delay="2">
       <a class="btn btn--light" href="/contact">Request Your Date</a>

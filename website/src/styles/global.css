@@ -42,7 +42,7 @@
 /* ---------- Tokens ---------- */
 :root {
   /* Matte blacks */
-  --ink: #141210;
+  --ink: #0b0a09;
   --ink-2: #1c1916;
   --ink-3: #26221e;
   /* Whites */
@@ -79,7 +79,7 @@
      with soft light falling from the top. No joints or lines. */
   --panel-bg:
     url("/img/grain.svg") 0 0 / 240px 240px,
-    linear-gradient(180deg, rgba(255, 244, 230, 0.045), rgba(255, 244, 230, 0) 42%, rgba(0, 0, 0, 0.22)),
+    linear-gradient(180deg, rgba(255, 244, 230, 0.03), rgba(255, 244, 230, 0) 42%, rgba(0, 0, 0, 0.3)),
     var(--ink);
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62 0 0 0 0 .58 0 0 0 0 .52 0 0 0 .075 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -225,16 +225,14 @@ h1 em, h2 em { color: var(--oak); }
   padding: 22px 0;
 }
 .site-header.is-scrolled, .site-header.is-open {
-  background-color: rgba(20, 18, 16, 0.94);
+  background-color: rgba(11, 10, 9, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 1px 0 var(--line-inv);
   padding: 12px 0;
 }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.site-header .brand { --cap: 17px; transition: opacity 0.4s var(--ease), visibility 0.4s; }
-/* On the home page the hero carries the full name, so the header mark appears once you scroll */
-.is-home .site-header:not(.is-scrolled):not(.is-open) .brand { opacity: 0; visibility: hidden; }
+.site-header .brand { --cap: 19px; }
 
 .nav { display: flex; align-items: center; gap: clamp(18px, 2.6vw, 36px); }
 .nav__list { display: flex; gap: clamp(18px, 2.4vw, 34px); list-style: none; margin: 0; padding: 0; }
@@ -318,7 +316,9 @@ h1 em, h2 em { color: var(--oak); }
 /* ---------- Hero (home) ---------- */
 .hero {
   position: relative; overflow: hidden;
-  padding: calc(96px + 3vw) 0 clamp(64px, 8vw, 110px);
+  padding: calc(120px + 4vw) 0 clamp(64px, 8vw, 110px);
+  min-height: min(90vh, 880px);
+  display: flex; align-items: center;
 }
 .hero__glow {
   position: absolute; inset: auto -10% -40% auto; width: 70vw; height: 70vw; pointer-events: none;
@@ -339,12 +339,10 @@ h1 em, h2 em { color: var(--oak); }
 .hero__kicker svg { width: 22px; height: 16px; fill: currentColor; }
 .hero__grid {
   display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 6vw, 90px); align-items: center; position: relative;
-  padding-top: clamp(40px, 5vw, 64px);
 }
-/* The panel joints divide the hero, so no extra rule line is needed here */
 .hero__tagline {
   font-family: var(--font-display); font-weight: 500; line-height: 1.08; letter-spacing: -0.005em;
-  font-size: clamp(2.1rem, 4.4vw, 3.9rem); color: var(--text-inv); margin: 0 0 0.45em; text-wrap: balance;
+  font-size: clamp(2.6rem, 6.2vw, 5.4rem); color: var(--text-inv); margin: 0 0 0.4em; text-wrap: balance;
 }
 .hero__tagline em { display: block; color: var(--oak-light); }
 .hero .lede { margin-bottom: 2.4rem; }
@@ -448,15 +446,7 @@ h1 em, h2 em { color: var(--oak); }
   font-family: var(--font-display); font-weight: 500; font-style: italic; font-size: 1.15rem; color: var(--oak-light);
   min-width: 2.2em;
 }
-.craft__credit {
-  display: flex; align-items: center; gap: 18px;
-  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-inv-muted); line-height: 1.5;
-}
-.craft__credit::before { content: ""; width: 36px; height: 1px; background: var(--oak-light); flex: none; }
-.craft__credit strong {
-  display: block; margin-top: 6px; color: var(--text-inv);
-  font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; letter-spacing: 0.01em; text-transform: none;
-}
+.craft__credit { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 1.35rem; line-height: 1.35; color: var(--oak-light); }
 
 /* ---------- Occasions ---------- */
 .occasions {
@@ -492,7 +482,7 @@ h1 em, h2 em { color: var(--oak); }
   color: var(--text-inv); margin-bottom: 12px;
 }
 .stat__value small { font-size: 0.45em; color: var(--oak-light); margin-left: 0.15em; font-style: italic; }
-.stat__label { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-inv-muted); line-height: 1.55; }
+.stat__label { font-size: 1.05rem; color: var(--text-inv-muted); line-height: 1.5; }
 
 /* ---------- CTA band ---------- */
 .cta { text-align: center; position: relative; overflow: hidden; }
@@ -517,7 +507,7 @@ h1 em, h2 em { color: var(--oak); }
   font-family: var(--font-display); color: var(--walnut);
 }
 .service__rate b { font-weight: 500; font-size: 3.2rem; line-height: 1; }
-.service__rate span { font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.service__rate span { font-family: var(--font-body); font-size: 1.05rem; color: var(--text-muted); }
 
 .menu-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .menu-list li { display: grid; grid-template-columns: 11em 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line); }
@@ -569,7 +559,7 @@ input[type="range"]::-moz-range-thumb {
 .estimate__rows li span:last-child { font-family: var(--font-display); font-size: 1.3rem; }
 .estimate__rows li[hidden] { display: none; }
 .estimate__total { font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.2rem); line-height: 1.1; margin: 6px 0 14px; color: var(--oak-light); }
-.estimate__note { font-size: 0.88rem; color: var(--text-inv-muted); line-height: 1.6; }
+.estimate__note { font-size: 1rem; color: var(--text-inv-muted); line-height: 1.6; }
 
 /* ---------- Policies ---------- */
 .policy-list { border-top: 1px solid var(--line); }
@@ -655,7 +645,7 @@ input[type="range"]::-moz-range-thumb {
 .site-footer a:hover { color: var(--oak-light); }
 .site-footer address { font-style: normal; color: var(--text-inv); }
 .site-footer address span { display: block; color: var(--text-inv-muted); }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-top: 28px; font-size: 0.82rem; color: var(--text-inv-muted); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-top: 28px; font-size: 0.95rem; color: var(--text-inv-muted); }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
@@ -694,7 +684,7 @@ input[type="range"]::-moz-range-thumb {
 }
 @media (max-width: 600px) {
   body { font-size: 1rem; }
-  .site-header .brand { --cap: 12.5px; }
+  .site-header .brand { --cap: 14px; }
   .brand--framed .brand__full { width: 200px; }
   .occasions { grid-template-columns: 1fr; }
   .occasions li { padding: 18px 4px; }

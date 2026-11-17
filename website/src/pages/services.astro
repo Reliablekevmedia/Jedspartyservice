@@ -28,7 +28,7 @@ const [bLo, bHi] = RATES.guestsPerBartender;
   title="Services & Rates"
   description={`Bartenders at $${RATES.bartender}/hour and servers at $${RATES.server}/hour, with setup and cleanup included. See our services, staffing recommendations and estimate your event.`}
 >
-  <PageHero eyebrow="Services & Rates" lede="Bartenders and servers are billed per hour, per staff member, with a four-hour minimum. Setup and cleanup are part of every booking.">
+  <PageHero lede="Bartenders and servers are billed per hour, per staff member, with a four-hour minimum. Setup and cleanup are part of every booking.">
     Professional staff, <em>start to finish.</em>
   </PageHero>
   <BarTop />
@@ -40,8 +40,7 @@ const [bLo, bHi] = RATES.guestsPerBartender;
           <div class="frame__img"><img src="/img/jed-pouring.jpg" width="398" height="397" loading="lazy" alt="Jed pouring tequila from a bottle on a stand into a glass at the bar" /></div>
         </figure>
         <div>
-          <p class="eyebrow reveal"><Martini />Bartenders</p>
-          <h2 id="bar-title" class="reveal">Full bar service</h2>
+          <h2 id="bar-title" class="reveal">Bartenders</h2>
           <p class="service__rate reveal" data-delay="1"><b>${RATES.bartender}</b><span>per hour, per bartender</span></p>
           <ul class="menu-list reveal" data-delay="2">
             {bartending.map((i) => <li><span class="menu-list__name">{i.name}</span><span class="menu-list__desc">{i.desc}</span></li>)}
@@ -54,8 +53,7 @@ const [bLo, bHi] = RATES.guestsPerBartender;
           <div class="frame__img"><img src="/img/champagne-service.jpg" width="1600" height="1066" loading="lazy" alt="A server in a white jacket carries a tray of champagne flutes through a wedding party" /></div>
         </figure>
         <div>
-          <p class="eyebrow reveal"><Martini />Servers</p>
-          <h2 id="server-title" class="reveal">Food &amp; table service</h2>
+          <h2 id="server-title" class="reveal">Servers</h2>
           <p class="service__rate reveal" data-delay="1"><b>${RATES.server}</b><span>per hour, per server</span></p>
           <ul class="menu-list reveal" data-delay="2">
             {serving.map((i) => <li><span class="menu-list__name">{i.name}</span><span class="menu-list__desc">{i.desc}</span></li>)}
@@ -68,15 +66,13 @@ const [bLo, bHi] = RATES.guestsPerBartender;
   <section class="section surface-dark" id="staffing" aria-labelledby="staffing-title">
     <div class="wrap">
       <div class="section-head section-head--left">
-        <p class="eyebrow reveal"><Martini />Recommended Staffing</p>
         <h2 id="staffing-title" class="reveal">The right team <em>for your guest count</em></h2>
-        <p class="lede reveal" data-delay="1">These recommendations ensure the most effective and professional service.</p>
       </div>
       <div class="stats">
-        <div class="stat reveal"><p class="stat__value">{RATES.minHours}<small>hrs</small></p><p class="stat__label">Minimum for every party. Extra hours at the standard rate</p></div>
-        <div class="stat reveal" data-delay="1"><p class="stat__value">{sLo}&ndash;{sHi}</p><p class="stat__label">Guests per waiter</p></div>
+        <div class="stat reveal"><p class="stat__value">{RATES.minHours}</p><p class="stat__label">Hour minimum</p></div>
+        <div class="stat reveal" data-delay="1"><p class="stat__value">{sLo}&ndash;{sHi}</p><p class="stat__label">Guests per server</p></div>
         <div class="stat reveal" data-delay="2"><p class="stat__value">{bLo}&ndash;{bHi}</p><p class="stat__label">Guests per bartender</p></div>
-        <div class="stat reveal" data-delay="3"><p class="stat__value">{RATES.coordinatorAtStaff}<small>+</small></p><p class="stat__label">Staffers? Add an event coordinator</p></div>
+        <div class="stat reveal" data-delay="3"><p class="stat__value">{RATES.coordinatorAtStaff}+</p><p class="stat__label">Staff: add a coordinator</p></div>
       </div>
     </div>
   </section>
@@ -86,7 +82,6 @@ const [bLo, bHi] = RATES.guestsPerBartender;
       <div class="section-head">
         <div class="divider reveal" aria-hidden="true"><Martini /></div>
         <h2 id="estimate-title" class="reveal">Estimate <em>your event</em></h2>
-        <p class="lede reveal" data-delay="1">Set your guest count and hours for a ballpark figure based on our recommended staffing and standard rates.</p>
       </div>
       <div
         class="estimator reveal"
@@ -117,14 +112,13 @@ const [bLo, bHi] = RATES.guestsPerBartender;
           </fieldset>
         </div>
         <div class="estimator__result" aria-live="polite">
-          <p class="eyebrow"><Martini />Your Estimate</p>
           <ul class="estimate__rows">
             <li data-row="servers"><span>Servers</span><span></span></li>
             <li data-row="bartenders"><span>Bartenders</span><span></span></li>
             <li data-row="coordinator" hidden><span>Event coordinator</span><span>Recommended</span></li>
           </ul>
           <p class="estimate__total" data-out="total"></p>
-          <p class="estimate__note">Estimate only. Staff are billed per hour, per staff member. Final pricing is confirmed after your free consultation, and holiday scheduling and pricing may vary.</p>
+          <p class="estimate__note">Estimate only. Final pricing is set at your free consultation.</p>
           <a class="btn btn--light" href="/contact" style="margin-top:22px">Request Your Date</a>
         </div>
       </div>

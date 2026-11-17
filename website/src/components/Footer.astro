@@ -13,10 +13,8 @@ const areaList = `${names.slice(0, -1).join(', ')} & ${names.at(-1)}`;
     <div class="footer-grid">
       <div class="footer-brand">
         <Brand framed />
-        <p>Professional party and event staffing. Bartenders, servers and event coordination for celebrations across Northern New Jersey.</p>
       </div>
       <div>
-        <h2>Contact</h2>
         <ul>
           <li><a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></li>
           <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
@@ -24,14 +22,12 @@ const areaList = `${names.slice(0, -1).join(', ')} & ${names.at(-1)}`;
         </ul>
       </div>
       <div>
-        <h2>Service Area</h2>
         <address>
           {SITE.city}, {SITE.state} {SITE.zip}
           <span>Serving {areaList} Counties and the greater Northern New Jersey area.</span>
         </address>
       </div>
       <div>
-        <h2>Explore</h2>
         <ul>
           <li><a href="/">Home</a></li>
           {NAV.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
@@ -39,8 +35,7 @@ const areaList = `${names.slice(0, -1).join(', ')} & ${names.at(-1)}`;
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-      <p>Payment by cash or check, payable to {SITE.name}</p>
+      <p>&copy; {new Date().getFullYear()} {SITE.name}</p>
     </div>
   </div>
 </footer>

@@ -21,7 +21,7 @@ const services = ['Bartender', 'Server', 'Both'];
   title="Contact & Event Requests"
   description={`Request your event date with ${SITE.name}. Call ${SITE.phone} anytime or send an event request.`}
 >
-  <PageHero eyebrow="Contact Us" lede="Please call anytime. Voice messages and emails will be returned as soon as possible.">
+  <PageHero lede="Please call anytime. Voice messages and emails will be returned as soon as possible.">
     Let&rsquo;s plan <em>your event.</em>
   </PageHero>
   <BarTop />
@@ -33,18 +33,15 @@ const services = ['Bartender', 'Server', 'Both'];
           <h2 id="talk-title">Talk with <em>Jed</em></h2>
           <p class="muted">Phone and email consultations are always free of charge.</p>
           <ul class="contact-lines">
-            <li><Icon name="phone" /><div><small>Phone</small><a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></div></li>
-            <li><Icon name="mail" /><div><small>Email</small><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div></li>
-            <li><Icon name="clock" /><div><small>Hours</small><span class="v">{SITE.hours}</span></div></li>
-            <li><Icon name="pin" /><div><small>Head Office</small><span class="v">{SITE.city}, {SITE.state} {SITE.zip}</span></div></li>
+            <li><Icon name="phone" /><div><a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></div></li>
+            <li><Icon name="mail" /><div><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div></li>
+            <li><Icon name="clock" /><div><span class="v">{SITE.hours}</span></div></li>
+            <li><Icon name="pin" /><div><span class="v">{SITE.city}, {SITE.state} {SITE.zip}</span></div></li>
           </ul>
-          <p class="muted" style="font-size:.95rem">Serving Northern New Jersey, including {names.slice(0, -1).join(', ')} and {names.at(-1)} Counties.</p>
         </aside>
 
         <form class="form" data-request-form data-mailto={SITE.email} novalidate aria-labelledby="form-title">
-          <p class="eyebrow"><Martini />Event Request Form</p>
           <h2 id="form-title" class="visually-hidden">Event Request Form</h2>
-          <p class="muted" style="margin-bottom:28px;font-size:.92rem"><span class="req" style="color:var(--oak)">*</span> Indicates required field</p>
           <div class="form__grid">
             <div>
               <label for="f-first">First name <span class="req">*</span></label>
@@ -58,14 +55,12 @@ const services = ['Bartender', 'Server', 'Both'];
             </div>
             <div>
               <label for="f-phone">Phone number <span class="req">*</span></label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="h-phone" />
-              <span class="hint" id="h-phone">Your best contact number.</span>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required />
               <span class="error">Please enter a phone number.</span>
             </div>
             <div>
               <label for="f-email">Email <span class="req">*</span></label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="h-email" />
-              <span class="hint" id="h-email">We will not use this address for marketing.</span>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
               <span class="error">Please enter a valid email address.</span>
             </div>
             <div>
@@ -91,14 +86,12 @@ const services = ['Bartender', 'Server', 'Both'];
             </div>
             <div>
               <label for="f-date">Date of event <span class="req">*</span></label>
-              <input id="f-date" name="date" required aria-describedby="h-date" placeholder="e.g. June 14, 2027" />
-              <span class="hint" id="h-date">No exact date yet? An approximate date or month is fine.</span>
+              <input id="f-date" name="date" required placeholder="Date or month" />
               <span class="error">Please enter a date or month.</span>
             </div>
             <div class="form__full">
               <label for="f-city">City of event <span class="req">*</span></label>
-              <input id="f-city" name="city" autocomplete="address-level2" required aria-describedby="h-city" />
-              <span class="hint" id="h-city">No exact location yet? Enter your city of residence.</span>
+              <input id="f-city" name="city" autocomplete="address-level2" required placeholder="Event city or your city" />
               <span class="error">Please enter a city.</span>
             </div>
             <div class="form__full">
@@ -108,7 +101,6 @@ const services = ['Bartender', 'Server', 'Both'];
           </div>
           <div class="form__actions">
             <button class="btn" type="submit">Send Request <Icon name="arrow" /></button>
-            <p>Sending opens your email app with your event details filled in, ready to go.</p>
           </div>
           <div class="form__status" role="status" tabindex="-1">
             Your email app should now be open with your request ready to send. If it didn&rsquo;t open, email
