@@ -27,8 +27,8 @@ npm run build    # outputs the site to dist/
   read "JED'S PARTY SERVICES" across one line; the footer shows the original boxed logo. The martini
   glass from the logo is the icon used throughout the site.
 - **Color:** matte black `#141210`, ivory `#f5f1ea`, walnut `#4d3222` and oak `#a87b52`.
-- **Texture:** dark sections are matte-black architectural panels with recessed joints
-  (`public/img/black-panels.svg`, vector so it stays crisp) under a fine grain (`public/img/grain.svg`).
+- **Texture:** each dark section is one seamless matte-black panel: a fine, sharp grain
+  (`public/img/grain.svg`, vector so it stays crisp) with soft light falling from the top.
   The wood "bar top" ledges use walnut and oak grain (`public/img/wood-*.jpg`). Generators are in `../tools/`.
 - **Type:** Cormorant Garamond for headings, Jost for text (self-hosted in `public/fonts`).
 
