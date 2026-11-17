@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 import { glassViewBox } from '../brand';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
@@ -14,7 +15,7 @@ import { SITE } from '../site';
       <h1 id="page-title">This page has <em>left the party.</em></h1>
       <p class="lede" style="margin-bottom:2.4rem">The page you&rsquo;re looking for doesn&rsquo;t exist or has moved. Let&rsquo;s get you back to the bar.</p>
       <div class="btn-row">
-        <a class="btn btn--light" href="/">Back to Home</a>
+        <a class="btn btn--light" href={url('/')}>Back to Home</a>
         <a class="btn btn--ghost" href={`tel:${SITE.phoneTel}`}><Icon name="phone" />{SITE.phone}</a>
       </div>
     </div>

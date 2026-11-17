@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
 import Cta from '../components/Cta.astro';
@@ -24,7 +25,7 @@ const facts = [
   <section class="section" aria-labelledby="jed-title">
     <div class="wrap split">
       <figure class="frame reveal" style="max-width:420px;justify-self:center">
-        <div class="frame__img"><img src="/img/jed-portrait.jpg" width="325" height="432" loading="lazy" alt="Jed Kessler in a black shirt and bow tie, smiling behind the bar" /></div>
+        <div class="frame__img"><img src={url('/img/jed-portrait.jpg')} width="325" height="432" loading="lazy" alt="Jed Kessler in a black shirt and bow tie, smiling behind the bar" /></div>
       </figure>
       <div>
         <h2 id="jed-title" class="about-name reveal">{SITE.owner}</h2>
@@ -52,11 +53,11 @@ const facts = [
         <p class="lede reveal" data-delay="1">You can expect Jed and his team to be attentive to your needs and responsive to your requests as they provide service with the utmost professionalism and a friendly smile.</p>
         <ul class="menu-list reveal" data-delay="2" style="margin-top:2rem">
           {facts.map((f) => <li><span class="menu-list__name">{f.name}</span><span class="menu-list__desc">{f.desc}</span></li>)}
-          <li><span class="menu-list__name">Handcrafted bars</span><span class="menu-list__desc">Custom wood bar tops built by our craftsman partners. <a href="/#craft">See the craft</a></span></li>
+          <li><span class="menu-list__name">Handcrafted bars</span><span class="menu-list__desc">Custom wood bar tops built by our craftsman partners. <a href={url('/#craft')}>See the craft</a></span></li>
         </ul>
       </div>
       <figure class="frame reveal" data-delay="1">
-        <div class="frame__img"><img src="/img/back-bar.jpg" width="1200" height="1005" loading="lazy" alt="A well-stocked back bar of whiskies, gins and tequilas on wooden shelves" /></div>
+        <div class="frame__img"><img src={url('/img/back-bar.jpg')} width="1200" height="1005" loading="lazy" alt="A well-stocked back bar of whiskies, gins and tequilas on wooden shelves" /></div>
       </figure>
     </div>
   </section>

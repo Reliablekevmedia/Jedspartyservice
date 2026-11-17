@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 import { glassViewBox } from '../brand';
 import { SITE } from '../site';
 import BarTop from './BarTop.astro';
@@ -23,7 +24,7 @@ const {
     <h2 id="cta-title" class="reveal">{title} <em>{accent}</em></h2>
     <a class="cta__phone reveal" data-delay="1" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>
     <div class="btn-row reveal" data-delay="2">
-      <a class="btn btn--light" href="/contact">Request Your Date</a>
+      <a class="btn btn--light" href={url('/contact')}>Request Your Date</a>
       <a class="btn btn--ghost" href={`mailto:${SITE.email}`}><Icon name="mail" />Email Us</a>
     </div>
   </div>

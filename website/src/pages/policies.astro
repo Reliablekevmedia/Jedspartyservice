@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
@@ -26,7 +27,7 @@ const holidays = ['Christmas Eve', 'New Year’s Eve', 'New Year’s Day', 'East
         <article class="policy reveal">
           <h2>Free Consultation</h2>
           <div class="policy__body">
-            <p>Phone and email consultations are free of charge. It is our goal to understand your party needs before final pricing and scheduling is established. Please fill out the <a href="/contact">Event Request Form</a>, or call or email us directly with details about your event.</p>
+            <p>Phone and email consultations are free of charge. It is our goal to understand your party needs before final pricing and scheduling is established. Please fill out the <a href={url('/contact')}>Event Request Form</a>, or call or email us directly with details about your event.</p>
           </div>
         </article>
         <article class="policy reveal">

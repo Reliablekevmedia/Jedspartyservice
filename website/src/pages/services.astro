@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
 import Cta from '../components/Cta.astro';
@@ -37,7 +38,7 @@ const [bLo, bHi] = RATES.guestsPerBartender;
     <div class="wrap">
       <article class="service" id="bartenders" aria-labelledby="bar-title">
         <figure class="frame service__media reveal" style="max-width:440px">
-          <div class="frame__img"><img src="/img/jed-pouring.jpg" width="398" height="397" loading="lazy" alt="Jed pouring tequila from a bottle on a stand into a glass at the bar" /></div>
+          <div class="frame__img"><img src={url('/img/jed-pouring.jpg')} width="398" height="397" loading="lazy" alt="Jed pouring tequila from a bottle on a stand into a glass at the bar" /></div>
         </figure>
         <div>
           <h2 id="bar-title" class="reveal">Bartenders</h2>
@@ -50,7 +51,7 @@ const [bLo, bHi] = RATES.guestsPerBartender;
 
       <article class="service service--flip" id="servers" aria-labelledby="server-title">
         <figure class="frame frame--left service__media reveal">
-          <div class="frame__img"><img src="/img/champagne-service.jpg" width="1600" height="1066" loading="lazy" alt="A server in a white jacket carries a tray of champagne flutes through a wedding party" /></div>
+          <div class="frame__img"><img src={url('/img/champagne-service.jpg')} width="1600" height="1066" loading="lazy" alt="A server in a white jacket carries a tray of champagne flutes through a wedding party" /></div>
         </figure>
         <div>
           <h2 id="server-title" class="reveal">Servers</h2>
@@ -119,7 +120,7 @@ const [bLo, bHi] = RATES.guestsPerBartender;
           </ul>
           <p class="estimate__total" data-out="total"></p>
           <p class="estimate__note">Estimate only. Final pricing is set at your free consultation.</p>
-          <a class="btn btn--light" href="/contact" style="margin-top:22px">Request Your Date</a>
+          <a class="btn btn--light" href={url('/contact')} style="margin-top:22px">Request Your Date</a>
         </div>
       </div>
     </div>

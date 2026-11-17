@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 // Jed's logo, traced from the original artwork.
 // Default: "JED'S PARTY SERVICES" reading across on one line, all one size (header, home hero).
 // framed: the original boxed logo, exactly as Jed has it.
@@ -11,7 +12,7 @@ interface Props {
 }
 const { framed = false, tag = 'a', class: className } = Astro.props;
 const Tag = tag;
-const link = tag === 'a' ? { href: '/', 'aria-label': "Jed's Party Services, home" } : { 'aria-hidden': 'true' };
+const link = tag === 'a' ? { href: url('/'), 'aria-label': "Jed's Party Services, home" } : { 'aria-hidden': 'true' };
 ---
 
 {framed ? (

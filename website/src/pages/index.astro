@@ -1,4 +1,5 @@
 ---
+import { url } from '../url';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
@@ -59,8 +60,8 @@ const schema = {
   name: SITE.name,
   description: SITE.description,
   url: Astro.site?.href,
-  image: new URL('/og-image.jpg', Astro.site).href,
-  logo: new URL('/favicon.svg', Astro.site).href,
+  image: new URL(url('/og-image.jpg'), Astro.site).href,
+  logo: new URL(url('/favicon.svg'), Astro.site).href,
   telephone: '+1-201-538-7276',
   email: SITE.email,
   founder: { '@type': 'Person', name: SITE.owner },
@@ -90,12 +91,12 @@ const schema = {
         <h1 id="hero-title" class="hero__tagline reveal">Going the extra mile <em>leaves a lifelong impression.</em></h1>
         <p class="lede reveal" data-delay="2">Polished bartenders and servers for weddings, milestones and gatherings across Northern New Jersey. We treat your special occasion as we would our own.</p>
         <div class="btn-row reveal" data-delay="3">
-          <a class="btn btn--light" href="/contact">Request Your Date</a>
+          <a class="btn btn--light" href={url('/contact')}>Request Your Date</a>
           <a class="btn btn--ghost" href={`tel:${SITE.phoneTel}`}><Icon name="phone" />{SITE.phone}</a>
         </div>
       </div>
       <figure class="arch hero__media reveal" data-delay="2">
-        <img src="/img/toast.jpg" width="823" height="800" fetchpriority="high" alt="Two guests raise glasses of whiskey in a toast at the bar" />
+        <img src={url('/img/toast.jpg')} width="823" height="800" fetchpriority="high" alt="Two guests raise glasses of whiskey in a toast at the bar" />
       </figure>
     </div>
   </section>
@@ -111,7 +112,7 @@ const schema = {
         </div>
       </div>
       <figure class="frame reveal" data-delay="1" style="max-width:400px;justify-self:center">
-        <div class="frame__img"><img src="/img/jed-portrait.jpg" width="325" height="432" loading="lazy" alt="Jed Kessler smiling behind a candlelit bar he set up for a 30th birthday party" /></div>
+        <div class="frame__img"><img src={url('/img/jed-portrait.jpg')} width="325" height="432" loading="lazy" alt="Jed Kessler smiling behind a candlelit bar he set up for a 30th birthday party" /></div>
       </figure>
     </div>
   </section>
@@ -140,7 +141,7 @@ const schema = {
   <section class="section craft surface-dark" id="craft" aria-labelledby="craft-title">
     <div class="wrap split">
       <div class="craft__media reveal">
-        <img src="/img/vintage-bar.jpg" width="1600" height="1200" loading="lazy" alt="Jed and a fellow bartender lean out of a custom wooden bar trailer with barn-door shutters" />
+        <img src={url('/img/vintage-bar.jpg')} width="1600" height="1200" loading="lazy" alt="Jed and a fellow bartender lean out of a custom wooden bar trailer with barn-door shutters" />
         <div class="craft__plank" aria-hidden="true"></div>
       </div>
       <div>
