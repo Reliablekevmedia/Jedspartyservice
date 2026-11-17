@@ -44,6 +44,12 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 Upload the whole folder to any static host (Netlify, Vercel, GitHub Pages, Cloudflare Pages, or the
 existing web host). Point the `jedspartyservices.com` domain at it.
 
+**Netlify + GitHub (recommended):** in Netlify choose *Add new site → Import an existing project →
+GitHub*, then pick this repository. `netlify.toml` already holds the settings (no build command, publish
+the repository root), so leave the build fields empty. Every push to the deployed branch updates the
+live site. `404.html` is Netlify's "page not found" page. The page names match the old Weebly site
+(`/services.html`, `/about.html`, `/policies.html`, `/contact.html`), so existing links keep working.
+
 ## Before launch
 
 1. **Confirm the bar-top partners' names.** `index.html` (The Craft section) credits

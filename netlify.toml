@@ -1,0 +1,16 @@
+# Netlify settings: plain static site, no build step.
+[build]
+  publish = "."
+
+# Keep the developer tools and notes off the live site.
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
