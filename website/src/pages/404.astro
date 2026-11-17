@@ -1,4 +1,5 @@
 ---
+import { glassViewBox } from '../brand';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
 import Icon from '../components/Icon.astro';
@@ -8,7 +9,7 @@ import { SITE } from '../site';
 
 <Base title="Page Not Found" noindex>
   <section class="page-hero surface-dark" aria-labelledby="page-title" style="min-height:70vh;display:flex;align-items:center">
-    <svg class="hero__watermark" viewBox="0 0 48 64" aria-hidden="true"><use href="#i-martini" /></svg>
+    <svg class="hero__watermark" viewBox={glassViewBox} aria-hidden="true"><use href="#i-martini" /></svg>
     <div class="wrap">
       <p class="eyebrow"><Martini />Page Not Found</p>
       <h1 id="page-title">This page has <em>left the party.</em></h1>

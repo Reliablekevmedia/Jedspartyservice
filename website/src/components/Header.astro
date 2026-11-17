@@ -42,5 +42,5 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   document.querySelectorAll('.nav a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
-  window.matchMedia('(min-width: 921px)').addEventListener('change', (mq) => mq.matches && setMenu(false));
+  window.matchMedia('(min-width: 1121px)').addEventListener('change', (mq) => mq.matches && setMenu(false));
 </script>

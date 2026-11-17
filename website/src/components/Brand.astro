@@ -1,13 +1,26 @@
 ---
-// The logo: JED + martini-glass apostrophe + S. "framed" is the boxed version
-// where the glass breaks through the frame, like the original logo.
+// Jed's logo, traced from the original artwork.
+// Default: "JED'S PARTY SERVICES" reading across on one line (header, home hero).
+// framed: the original boxed logo, exactly as Jed has it.
+import { LOGO } from '../brand';
+
 interface Props {
   framed?: boolean;
+  tag?: 'a' | 'span';
+  class?: string;
 }
-const { framed = false } = Astro.props;
+const { framed = false, tag = 'a', class: className } = Astro.props;
+const Tag = tag;
+const link = tag === 'a' ? { href: '/', 'aria-label': "Jed's Party Services, home" } : { 'aria-hidden': 'true' };
 ---
 
-<a class:list={['brand', { 'brand--framed': framed }]} href="/" aria-label="Jed's Party Services, home">
-  <span class="brand__word" aria-hidden="true">JED<span class="brand__apos"><svg class="brand__glass" viewBox="0 0 48 52"><use href="#i-glass" /></svg></span>S</span>
-  <span class="brand__sub" aria-hidden="true">Party Services</span>
-</a>
+{framed ? (
+  <Tag class:list={['brand', 'brand--framed', className]} {...link}>
+    <svg class="brand__full" viewBox={`0 0 ${LOGO.full.w} ${LOGO.full.h}`} aria-hidden="true"><use href="#logo-full" /></svg>
+  </Tag>
+) : (
+  <Tag class:list={['brand', className]} {...link}>
+    <svg class="brand__jeds" viewBox={`0 0 ${LOGO.jeds.w} ${LOGO.jeds.h}`} aria-hidden="true"><use href="#logo-jeds" /></svg>
+    <svg class="brand__sub" viewBox={`0 0 ${LOGO.sub.w} ${LOGO.sub.h}`} aria-hidden="true"><use href="#logo-sub" /></svg>
+  </Tag>
+)}

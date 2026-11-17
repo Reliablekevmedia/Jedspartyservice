@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import BarTop from '../components/BarTop.astro';
+import Brand from '../components/Brand.astro';
 import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
 import Martini from '../components/Martini.astro';
@@ -80,15 +81,18 @@ const schema = {
 };
 ---
 
-<Base>
+<Base home>
   <Fragment slot="head"><script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} /></Fragment>
 
   <section class="hero surface-dark" aria-labelledby="hero-title">
     <div class="hero__glow" aria-hidden="true"></div>
-    <div class="wrap">
+    <div class="wrap hero__masthead">
+      <h1 id="hero-title" class="hero__name reveal"><span class="visually-hidden">{SITE.name}</span><Brand tag="span" class="brand--hero" /></h1>
+      <p class="hero__kicker reveal" data-delay="1"><span>{SITE.tagline}</span><Martini /><span>Northern New Jersey</span></p>
+    </div>
+    <div class="wrap hero__grid">
       <div class="hero__copy">
-        <p class="eyebrow reveal"><Martini />{SITE.tagline}</p>
-        <h1 id="hero-title" class="reveal" data-delay="1">Going the extra mile <em>leaves a lifelong impression.</em></h1>
+        <p class="hero__tagline reveal" data-delay="1">Going the extra mile <em>leaves a lifelong impression.</em></p>
         <p class="lede reveal" data-delay="2">Polished bartenders and servers for weddings, milestones and gatherings across Northern New Jersey. We treat your special occasion as we would our own.</p>
         <div class="btn-row reveal" data-delay="3">
           <a class="btn btn--light" href="/contact">Request Your Date</a>

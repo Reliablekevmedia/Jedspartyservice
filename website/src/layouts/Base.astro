@@ -9,9 +9,10 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  home?: boolean;
 }
 
-const { title, description = SITE.description, noindex = false } = Astro.props;
+const { title, description = SITE.description, noindex = false, home = false } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} | Bartenders & Event Staff in Northern NJ`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og-image.jpg', Astro.site);
@@ -40,7 +41,7 @@ const ogImage = new URL('/og-image.jpg', Astro.site);
     <link rel="preload" href="/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin />
     <slot name="head" />
   </head>
-  <body>
+  <body class:list={{ 'is-home': home }}>
     <Icons />
     <a class="skip-link" href="#main">Skip to content</a>
     <Header />
