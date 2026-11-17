@@ -1,6 +1,6 @@
 # Jed's Party Services website
 
-Built with [Astro](https://astro.build), the same setup as the Sixth Sense Studios site. Run it locally:
+Built with [Astro](https://astro.build). Run it locally:
 
 ```
 npm install

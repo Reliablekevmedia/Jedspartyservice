@@ -1,4 +1,4 @@
-# Netlify settings. The site is an Astro project in website/ (same setup as RK).
+# Netlify settings. The site is an Astro project in website/.
 [build]
   base = "website"
   command = "npm run build"
