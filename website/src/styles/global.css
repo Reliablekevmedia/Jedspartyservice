@@ -75,7 +75,10 @@
   --wood-walnut: url("/img/wood-walnut.jpg");
   --wood-oak: url("/img/wood-oak.jpg");
   /* Fine matte grain laid over dark surfaces */
-  --matte: url("/img/matte-black.jpg");
+  /* Matte-black architectural panels (vector) under a fine, sharp grain */
+  --panels: url("/img/black-panels.svg");
+  --panel-size: 1440px 720px;
+  --panel-bg: url("/img/grain.svg") 0 0 / 240px 240px, var(--panels) center top / var(--panel-size), var(--ink);
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62 0 0 0 0 .58 0 0 0 0 .52 0 0 0 .075 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -137,9 +140,7 @@ h1 em, h2 em { color: var(--oak); }
 
 /* ---------- Surfaces ---------- */
 .surface-dark {
-  background-color: var(--ink);
-  background-image: var(--matte);
-  background-size: 512px;
+  background: var(--panel-bg);
   color: var(--text-inv);
 }
 .surface-dark .muted, .surface-dark .lede { color: var(--text-inv-muted); }
@@ -262,7 +263,7 @@ h1 em, h2 em { color: var(--oak); }
   .nav {
     position: fixed; inset: 0; z-index: -1;
     flex-direction: column; justify-content: center; gap: 40px;
-    background-color: var(--ink); background-image: var(--matte); background-size: 512px;
+    background: var(--panel-bg);
     opacity: 0; visibility: hidden; transition: opacity 0.35s var(--ease), visibility 0.35s;
   }
   .is-open .nav { opacity: 1; visibility: visible; }
@@ -338,9 +339,7 @@ h1 em, h2 em { color: var(--oak); }
   display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 6vw, 90px); align-items: center; position: relative;
   padding-top: clamp(40px, 5vw, 64px);
 }
-.hero__grid::before {
-  content: ""; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); height: 1px; background: var(--line-inv);
-}
+/* The panel joints divide the hero, so no extra rule line is needed here */
 .hero__tagline {
   font-family: var(--font-display); font-weight: 500; line-height: 1.08; letter-spacing: -0.005em;
   font-size: clamp(2.1rem, 4.4vw, 3.9rem); color: var(--text-inv); margin: 0 0 0.45em; text-wrap: balance;
@@ -531,7 +530,7 @@ h1 em, h2 em { color: var(--oak); }
   background: var(--paper); border: 1px solid var(--line);
 }
 .estimator__controls { padding: clamp(28px, 4vw, 52px); border-right: 1px solid var(--line); }
-.estimator__result { padding: clamp(28px, 4vw, 52px); background-color: var(--ink); background-image: var(--matte); background-size: 512px; color: var(--text-inv); }
+.estimator__result { padding: clamp(28px, 4vw, 52px); background: var(--panel-bg); color: var(--text-inv); }
 .field { margin-bottom: 28px; }
 .field:last-child { margin-bottom: 0; }
 .field label, .field .label {
@@ -692,6 +691,7 @@ input[type="range"]::-moz-range-thumb {
   .craft .split { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
+  :root { --panel-size: 960px 480px; }
   body { font-size: 1rem; }
   .site-header .brand { --cap: 12.5px; }
   .brand--framed .brand__full { width: 200px; }
