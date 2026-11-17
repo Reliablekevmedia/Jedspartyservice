@@ -1,0 +1,62 @@
+---
+// Opening animation, shown once per visit: the martini glass from Jed's logo is
+// poured and filled, the olive drops in, then the site fades up.
+// The glass is the traced logo glass (#i-martini); clip paths split it into
+// outline, liquid and garnish so each part can animate on its own.
+// Coordinates are in the glass symbol's own units (0 0 108.38 76.4).
+import { LOGO } from '../brand';
+
+const { w, h } = LOGO.glass;
+---
+
+<div class="intro-overlay" aria-hidden="true">
+  <svg class="intro-glass" viewBox={`0 -64 ${w} 204.8`}>
+    <defs>
+      <!-- inside of the bowl (the liquid), minus the bit of pick crossing the gap -->
+      <clipPath id="intro-liquid">
+        <path clip-rule="evenodd" d="M7.17 26.88L99.07 26.88L54.17 70.48Z M57.67 26.68L66.97 26.68L64.17 35.88L57.67 35.88Z" />
+      </clipPath>
+      <!-- olive and pick: above the rim, plus the pick crossing the gap -->
+      <clipPath id="intro-garnish">
+        <path d="M49.17 -2L94.17 -2L94.17 22.38L49.17 22.38Z M57.67 26.68L66.97 26.68L64.17 35.88L57.67 35.88Z" />
+      </clipPath>
+      <!-- everything else: the glass outline -->
+      <clipPath id="intro-outline">
+        <path clip-rule="evenodd" d="M-10 -10L120 -10L120 90L-10 90Z M7.17 26.88L99.07 26.88L54.17 70.48Z M49.17 -10L94.17 -10L94.17 22.38L49.17 22.38Z" />
+      </clipPath>
+      <!-- the rising liquid level -->
+      <clipPath id="intro-level">
+        <rect class="intro-level" x="0" y="25" width={w} height="60" />
+      </clipPath>
+    </defs>
+
+    <g class="intro-outline" clip-path="url(#intro-outline)"><use href="#i-martini" width={w} height={h} /></g>
+    <path class="intro-stream" d="M46.5 -60V62" />
+    <g clip-path="url(#intro-level)"><g clip-path="url(#intro-liquid)"><use href="#i-martini" width={w} height={h} /></g></g>
+    <g class="intro-garnish"><g clip-path="url(#intro-garnish)"><use href="#i-martini" width={w} height={h} /></g></g>
+  </svg>
+</div>
+
+<script>
+  // Hide the intro when it finishes (or when tapped / a key is pressed) and let the page animate in.
+  const root = document.documentElement;
+  const overlay = document.querySelector<HTMLElement>('.intro-overlay');
+  if (overlay && root.classList.contains('intro')) {
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      overlay.remove();
+      document.dispatchEvent(new Event('intro:done'));
+    };
+    overlay.addEventListener('animationend', (e) => {
+      if (e.animationName === 'intro-out') finish();
+    });
+    const skip = () => overlay.classList.add('is-skipped');
+    overlay.addEventListener('click', skip);
+    document.addEventListener('keydown', skip, { once: true });
+    window.setTimeout(finish, 4000); // safety net
+  } else {
+    overlay?.remove();
+  }
+</script>
