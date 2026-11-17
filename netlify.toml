@@ -6,6 +6,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Demo phase: keeps the .netlify.app address out of Google.
+  # Delete this line when jedspartyservices.com is connected and the site goes live.
+  PUBLIC_PREVIEW = "true"
 
 # The old Weebly site used .html addresses. Send them to the new clean addresses.
 [[redirects]]
