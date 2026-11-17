@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro';
+import BarTop from '../components/BarTop.astro';
+import Cta from '../components/Cta.astro';
+import Martini from '../components/Martini.astro';
+import PageHero from '../components/PageHero.astro';
+import { RATES } from '../site';
+
+const bartending = [
+  { name: 'Party Prep', desc: 'Set up the bar and prepare mixers, garnish and ice.' },
+  { name: 'Full Bar Service', desc: 'Mix cocktails and pour wine, beer and champagne.' },
+  { name: 'Party Cleanup', desc: 'Clean glassware, counters and the back bar area, organize rental equipment and remove all garbage.' },
+];
+
+const serving = [
+  { name: 'Party Prep', desc: 'Set up tables, chairs and decorations.' },
+  { name: 'Cocktail Hour', desc: 'Hors d’oeuvres served on trays or buffet style.' },
+  { name: 'Dinner Service', desc: 'Food serving or buffet style.' },
+  { name: 'Dessert', desc: 'Coffee and dessert table setup and service.' },
+  { name: 'Cleanup', desc: 'Clean dishes, sweep the event space, organize rental equipment and furniture, and remove all garbage.' },
+];
+
+const [sLo, sHi] = RATES.guestsPerServer;
+const [bLo, bHi] = RATES.guestsPerBartender;
+---
+
+<Base
+  title="Services & Rates"
+  description={`Bartenders at $${RATES.bartender}/hour and servers at $${RATES.server}/hour, with setup and cleanup included. See our services, staffing recommendations and estimate your event.`}
+>
+  <PageHero eyebrow="Services & Rates" lede="Bartenders and servers are billed per hour, per staff member, with a four-hour minimum. Setup and cleanup are part of every booking.">
+    Professional staff, <em>start to finish.</em>
+  </PageHero>
+  <BarTop />
+
+  <section class="section" aria-label="Services">
+    <div class="wrap">
+      <article class="service" id="bartenders" aria-labelledby="bar-title">
+        <figure class="frame service__media reveal" style="max-width:440px">
+          <div class="frame__img"><img src="/img/jed-pouring.jpg" width="398" height="397" loading="lazy" alt="Jed pouring tequila from a bottle on a stand into a glass at the bar" /></div>
+        </figure>
+        <div>
+          <p class="eyebrow reveal"><Martini />Bartenders</p>
+          <h2 id="bar-title" class="reveal">Full bar service</h2>
+          <p class="service__rate reveal" data-delay="1"><b>${RATES.bartender}</b><span>per hour, per bartender</span></p>
+          <ul class="menu-list reveal" data-delay="2">
+            {bartending.map((i) => <li><span class="menu-list__name">{i.name}</span><span class="menu-list__desc">{i.desc}</span></li>)}
+          </ul>
+        </div>
+      </article>
+
+      <article class="service service--flip" id="servers" aria-labelledby="server-title">
+        <figure class="frame frame--left service__media reveal">
+          <div class="frame__img"><img src="/img/champagne-service.jpg" width="1600" height="1066" loading="lazy" alt="A server in a white jacket carries a tray of champagne flutes through a wedding party" /></div>
+        </figure>
+        <div>
+          <p class="eyebrow reveal"><Martini />Servers</p>
+          <h2 id="server-title" class="reveal">Food &amp; table service</h2>
+          <p class="service__rate reveal" data-delay="1"><b>${RATES.server}</b><span>per hour, per server</span></p>
+          <ul class="menu-list reveal" data-delay="2">
+            {serving.map((i) => <li><span class="menu-list__name">{i.name}</span><span class="menu-list__desc">{i.desc}</span></li>)}
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section surface-dark" id="staffing" aria-labelledby="staffing-title">
+    <div class="wrap">
+      <div class="section-head section-head--left">
+        <p class="eyebrow reveal"><Martini />Recommended Staffing</p>
+        <h2 id="staffing-title" class="reveal">The right team <em>for your guest count</em></h2>
+        <p class="lede reveal" data-delay="1">These recommendations ensure the most effective and professional service.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><p class="stat__value">{RATES.minHours}<small>hrs</small></p><p class="stat__label">Minimum for every party. Extra hours at the standard rate</p></div>
+        <div class="stat reveal" data-delay="1"><p class="stat__value">{sLo}&ndash;{sHi}</p><p class="stat__label">Guests per waiter</p></div>
+        <div class="stat reveal" data-delay="2"><p class="stat__value">{bLo}&ndash;{bHi}</p><p class="stat__label">Guests per bartender</p></div>
+        <div class="stat reveal" data-delay="3"><p class="stat__value">{RATES.coordinatorAtStaff}<small>+</small></p><p class="stat__label">Staffers? Add an event coordinator</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface-bone" aria-labelledby="estimate-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="divider reveal" aria-hidden="true"><Martini /></div>
+        <h2 id="estimate-title" class="reveal">Estimate <em>your event</em></h2>
+        <p class="lede reveal" data-delay="1">Set your guest count and hours for a ballpark figure based on our recommended staffing and standard rates.</p>
+      </div>
+      <div
+        class="estimator reveal"
+        data-estimator
+        data-rate-server={RATES.server}
+        data-rate-bar={RATES.bartender}
+        data-min-hours={RATES.minHours}
+        data-server-ratio={RATES.guestsPerServer.join(',')}
+        data-bar-ratio={RATES.guestsPerBartender.join(',')}
+        data-coordinator-at={RATES.coordinatorAtStaff}
+      >
+        <div class="estimator__controls">
+          <div class="field">
+            <label for="est-guests">Guests <output data-out="guests" for="est-guests">75</output></label>
+            <input id="est-guests" type="range" min="10" max="300" step="5" value="75" />
+          </div>
+          <div class="field">
+            <label for="est-hours">Party length <output data-out="hours" for="est-hours">5 hrs</output></label>
+            <input id="est-hours" type="range" min={RATES.minHours} max="12" step="1" value="5" />
+          </div>
+          <fieldset class="field" style="border:0;padding:0;margin-inline:0">
+            <legend class="label" style="padding:0;margin-bottom:12px;font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase">Service</legend>
+            <div class="segmented">
+              <input type="radio" name="est-service" id="svc-both" value="both" checked /><label for="svc-both">Both</label>
+              <input type="radio" name="est-service" id="svc-bar" value="bar" /><label for="svc-bar">Bar</label>
+              <input type="radio" name="est-service" id="svc-server" value="server" /><label for="svc-server">Servers</label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="estimator__result" aria-live="polite">
+          <p class="eyebrow"><Martini />Your Estimate</p>
+          <ul class="estimate__rows">
+            <li data-row="servers"><span>Servers</span><span></span></li>
+            <li data-row="bartenders"><span>Bartenders</span><span></span></li>
+            <li data-row="coordinator" hidden><span>Event coordinator</span><span>Recommended</span></li>
+          </ul>
+          <p class="estimate__total" data-out="total"></p>
+          <p class="estimate__note">Estimate only. Staff are billed per hour, per staff member. Final pricing is confirmed after your free consultation, and holiday scheduling and pricing may vary.</p>
+          <a class="btn btn--light" href="/contact" style="margin-top:22px">Request Your Date</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<script>
+  // Staffing estimator: recommended staff and a cost range from the rates in site.ts.
+  const est = document.querySelector<HTMLElement>('[data-estimator]');
+  if (est) {
+    const d = est.dataset;
+    const rateServer = Number(d.rateServer);
+    const rateBar = Number(d.rateBar);
+    const minHours = Number(d.minHours);
+    const [serverMin, serverMax] = (d.serverRatio ?? '15,25').split(',').map(Number);
+    const [barMin, barMax] = (d.barRatio ?? '30,50').split(',').map(Number);
+    const coordinatorAt = Number(d.coordinatorAt);
+
+    const guests = est.querySelector<HTMLInputElement>('#est-guests')!;
+    const hours = est.querySelector<HTMLInputElement>('#est-hours')!;
+    const out = (k: string) => est.querySelector<HTMLElement>(`[data-out='${k}']`)!;
+    const row = (k: string) => est.querySelector<HTMLElement>(`[data-row='${k}']`)!;
+    const money = (n: number) => '$' + n.toLocaleString('en-US');
+    const range = (lo: number, hi: number, unit: string) => `${lo === hi ? lo : `${lo}–${hi}`} ${unit}${hi === 1 ? '' : 's'}`;
+    const paint = (input: HTMLInputElement) => {
+      const pct = ((+input.value - +input.min) / (+input.max - +input.min)) * 100;
+      input.style.setProperty('--fill', pct + '%');
+    };
+
+    const update = () => {
+      const g = Number(guests.value);
+      const h = Math.max(minHours, Number(hours.value));
+      const service = est.querySelector<HTMLInputElement>("input[name='est-service']:checked")!.value;
+      out('guests').textContent = String(g);
+      out('hours').textContent = `${h} hrs`;
+      paint(guests);
+      paint(hours);
+
+      const sLo = Math.max(1, Math.ceil(g / serverMax)), sHi = Math.max(1, Math.ceil(g / serverMin));
+      const bLo = Math.max(1, Math.ceil(g / barMax)), bHi = Math.max(1, Math.ceil(g / barMin));
+      const useS = service !== 'bar', useB = service !== 'server';
+
+      row('servers').hidden = !useS;
+      row('bartenders').hidden = !useB;
+      row('servers').lastElementChild!.textContent = range(sLo, sHi, 'server');
+      row('bartenders').lastElementChild!.textContent = range(bLo, bHi, 'bartender');
+
+      const lo = ((useS ? sLo * rateServer : 0) + (useB ? bLo * rateBar : 0)) * h;
+      const hi = ((useS ? sHi * rateServer : 0) + (useB ? bHi * rateBar : 0)) * h;
+      out('total').textContent = lo === hi ? money(lo) : `${money(lo)} – ${money(hi)}`;
+      row('coordinator').hidden = (useS ? sHi : 0) + (useB ? bHi : 0) < coordinatorAt;
+    };
+
+    est.addEventListener('input', update);
+    est.addEventListener('change', update);
+    update();
+  }
+</script>

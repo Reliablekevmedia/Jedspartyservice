@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import BarTop from '../components/BarTop.astro';
+import Icon from '../components/Icon.astro';
+import Martini from '../components/Martini.astro';
+import { SITE } from '../site';
+---
+
+<Base title="Page Not Found" noindex>
+  <section class="page-hero surface-dark" aria-labelledby="page-title" style="min-height:70vh;display:flex;align-items:center">
+    <svg class="hero__watermark" viewBox="0 0 48 64" aria-hidden="true"><use href="#i-martini" /></svg>
+    <div class="wrap">
+      <p class="eyebrow"><Martini />Page Not Found</p>
+      <h1 id="page-title">This page has <em>left the party.</em></h1>
+      <p class="lede" style="margin-bottom:2.4rem">The page you&rsquo;re looking for doesn&rsquo;t exist or has moved. Let&rsquo;s get you back to the bar.</p>
+      <div class="btn-row">
+        <a class="btn btn--light" href="/">Back to Home</a>
+        <a class="btn btn--ghost" href={`tel:${SITE.phoneTel}`}><Icon name="phone" />{SITE.phone}</a>
+      </div>
+    </div>
+  </section>
+  <BarTop />
+</Base>

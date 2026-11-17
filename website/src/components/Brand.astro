@@ -1,0 +1,13 @@
+---
+// The logo: JED + martini-glass apostrophe + S. "framed" is the boxed version
+// where the glass breaks through the frame, like the original logo.
+interface Props {
+  framed?: boolean;
+}
+const { framed = false } = Astro.props;
+---
+
+<a class:list={['brand', { 'brand--framed': framed }]} href="/" aria-label="Jed's Party Services, home">
+  <span class="brand__word" aria-hidden="true">JED<span class="brand__apos"><svg class="brand__glass" viewBox="0 0 48 52"><use href="#i-glass" /></svg></span>S</span>
+  <span class="brand__sub" aria-hidden="true">Party Services</span>
+</a>

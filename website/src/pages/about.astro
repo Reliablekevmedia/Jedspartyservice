@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import BarTop from '../components/BarTop.astro';
+import Cta from '../components/Cta.astro';
+import Martini from '../components/Martini.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../site';
+
+const facts = [
+  { name: '25+ years', desc: 'In the food service industry, from local eateries to fine dining.' },
+  { name: 'Bergen County', desc: 'Trained in some of the area’s finest dining restaurants.' },
+];
+---
+
+<Base
+  title="About Jed Kessler"
+  description="Meet Jed Kessler, owner of Jed's Party Services, with over 25 years in the food service industry, from local eateries to Bergen County fine dining."
+>
+  <PageHero eyebrow="About Us" lede={`${SITE.name} is owned and operated by ${SITE.owner}, a ${SITE.city} native who has spent his career in hospitality.`}>
+    A host at heart, <em>for over 25 years.</em>
+  </PageHero>
+  <BarTop />
+
+  <section class="section" aria-labelledby="jed-title">
+    <div class="wrap split">
+      <figure class="frame reveal" style="max-width:420px;justify-self:center">
+        <div class="frame__img"><img src="/img/jed-portrait.jpg" width="325" height="432" loading="lazy" alt="Jed Kessler in a black shirt and bow tie, smiling behind the bar" /></div>
+        <figcaption>{SITE.city}, New Jersey</figcaption>
+      </figure>
+      <div>
+        <h2 id="jed-title" class="about-name reveal">{SITE.owner}</h2>
+        <p class="about-role reveal">Owner / Operator</p>
+        <div class="reveal" data-delay="1">
+          <p>Jed Kessler has been in the food service industry for over 25 years. At an early age Jed loved to host and entertain his friends and family. When he was fifteen years old he entered the service industry, starting at local eateries and moving on to some of the finest dining restaurants in Bergen County, New Jersey.</p>
+          <p>He lives in his hometown of Fair Lawn, New Jersey with his wife, kids and two dogs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface-dark" aria-label="Jed's philosophy">
+    <div class="wrap">
+      <div class="divider reveal" aria-hidden="true"><Martini /></div>
+      <blockquote class="quote reveal" data-delay="1">
+        <p>To make others happy, and to always exceed expectations.</p>
+        <cite>Jed&rsquo;s personal philosophy</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section surface-bone" aria-labelledby="expect-title">
+    <div class="wrap split split--wide-left">
+      <div>
+        <p class="eyebrow reveal"><Martini />What to Expect</p>
+        <h2 id="expect-title" class="reveal">Attentive, responsive <em>and always professional.</em></h2>
+        <p class="lede reveal" data-delay="1">You can expect Jed and his team to be attentive to your needs and responsive to your requests as they provide service with the utmost professionalism and a friendly smile.</p>
+        <ul class="menu-list reveal" data-delay="2" style="margin-top:2rem">
+          {facts.map((f) => <li><span class="menu-list__name">{f.name}</span><span class="menu-list__desc">{f.desc}</span></li>)}
+          <li><span class="menu-list__name">Handcrafted bars</span><span class="menu-list__desc">Custom wood bar tops built by our craftsman partners. <a href="/#craft">See the craft</a></span></li>
+        </ul>
+      </div>
+      <figure class="frame reveal" data-delay="1">
+        <div class="frame__img"><img src="/img/back-bar.jpg" width="1200" height="1005" loading="lazy" alt="A well-stocked back bar of whiskies, gins and tequilas on wooden shelves" /></div>
+      </figure>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

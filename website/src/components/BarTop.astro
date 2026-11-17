@@ -1,0 +1,9 @@
+---
+// The hand-finished wood ledge used under page headers and above calls to action.
+interface Props {
+  wood?: 'walnut' | 'oak';
+}
+const { wood = 'walnut' } = Astro.props;
+---
+
+<div class:list={['bar-top', { 'bar-top--oak': wood === 'oak' }]} role="presentation"></div>

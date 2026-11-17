@@ -1,0 +1,8 @@
+---
+interface Props {
+  name: 'phone' | 'mail' | 'pin' | 'clock' | 'arrow';
+}
+const { name } = Astro.props;
+---
+
+<svg class="icon" aria-hidden="true"><use href={`#i-${name}`} /></svg>

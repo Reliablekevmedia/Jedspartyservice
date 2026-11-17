@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import BarTop from '../components/BarTop.astro';
+import Cta from '../components/Cta.astro';
+import PageHero from '../components/PageHero.astro';
+import { RATES, SITE } from '../site';
+
+const counties = (await getCollection('counties')).sort((a, b) => a.data.order - b.data.order);
+const names = counties.map((c) => c.data.name.replace(' County', ''));
+const holidays = ['Christmas Eve', 'New Year’s Eve', 'New Year’s Day', 'Easter', 'Memorial Day', 'July 4th'];
+---
+
+<Base
+  title="Policies"
+  description="Free consultations, holiday events, payment, deposits and cancellation policies for Jed's Party Services in Northern New Jersey."
+>
+  <PageHero eyebrow="Our Policies" lede="Everything you need to know before booking. Have a question? Please call anytime.">
+    Clear terms, <em>no surprises.</em>
+  </PageHero>
+  <BarTop />
+
+  <section class="section" aria-label="Policy information">
+    <div class="wrap">
+      <div class="policy-list">
+        <article class="policy reveal">
+          <h2>Free Consultation</h2>
+          <div class="policy__body">
+            <p>Phone and email consultations are free of charge. It is our goal to understand your party needs before final pricing and scheduling is established. Please fill out the <a href="/contact">Event Request Form</a>, or call or email us directly with details about your event.</p>
+          </div>
+        </article>
+        <article class="policy reveal">
+          <h2>Minimum Hours</h2>
+          <div class="policy__body">
+            <p>All parties require a minimum of {RATES.minHours} hours. Additional party hours can be scheduled at the standard rate upon request. Waiters and bartenders are billed per hour, per staff member.</p>
+          </div>
+        </article>
+        <article class="policy reveal">
+          <h2>Holiday Events</h2>
+          <div class="policy__body">
+            <p>Due to higher demand, holiday scheduling and pricing may vary from normal. Please call us to discuss your holiday event. Holidays include:</p>
+            <ul>{holidays.map((h) => <li>{h}</li>)}</ul>
+          </div>
+        </article>
+        <article class="policy reveal">
+          <h2>Payment</h2>
+          <div class="policy__body">
+            <p>Accepted payments include cash or check, payable to {SITE.name}.</p>
+            <div class="policy__figure">
+              <div><b>{RATES.depositPercent}%</b><span>Non-refundable deposit, required to hold your event date</span></div>
+              <div><b>{100 - RATES.depositPercent}%</b><span>Final balance, due within {RATES.balanceDueHours} hours of your event</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="policy reveal">
+          <h2>Cancellation</h2>
+          <div class="policy__body">
+            <p>Cancellations can be made at any time. If the event is rescheduled, any deposit that has been collected will be applied to the new event. However, if no future events are scheduled, the deposit is deemed non-refundable.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section surface-dark" aria-labelledby="office-title">
+    <div class="wrap">
+      <h2 id="office-title" class="visually-hidden">Office information</h2>
+      <div class="info-grid">
+        <div class="reveal"><h3>Service Area</h3><p>Northern New Jersey, including {names.slice(0, -1).join(', ')} &amp; {names.at(-1)} Counties</p></div>
+        <div class="reveal" data-delay="1"><h3>Head Office</h3><p>{SITE.city}, {SITE.state} {SITE.zip}</p></div>
+        <div class="reveal" data-delay="2"><h3>Office Hours</h3><p>{SITE.hours}</p></div>
+        <div class="reveal" data-delay="3"><h3>Contact Number</h3><p><a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

@@ -1,0 +1,41 @@
+# Jed's Party Services website
+
+Built with [Astro](https://astro.build), the same setup as the Sixth Sense Studios site. Run it locally:
+
+```
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # outputs the site to dist/
+```
+
+## Where things live
+
+- `src/site.ts`: business name, phone, email, hours, menu, and the **rates and staffing ratios**
+  (the services page, estimator and policies all read these, so a price change is one edit)
+- `src/data/counties.json`: the service area (Bergen, Essex, Hudson, Passaic)
+- `src/pages/`: the pages themselves (home, services, about, policies, contact, 404)
+- `src/components/`: shared pieces: `Header`, `Footer`, `Brand` (the martini-glass logo),
+  `BarTop` (the wood ledge), `PageHero`, `Cta`, `Icons` (SVG sprite)
+- `src/layouts/Base.astro`: the page shell (meta tags, header, footer, scroll reveal)
+- `src/styles/global.css`: colors, fonts, spacing and all component styles
+- `public/`: photos, wood textures, fonts, favicon and the social share image
+
+## Design
+
+Matte black `#141210`, ivory `#f5f1ea`, walnut `#4d3222` and oak `#a87b52`. Cormorant Garamond for
+headings, Jost for text (self-hosted in `public/fonts`). The logo's martini-glass apostrophe is the
+brand mark throughout, and the wood "bar top" ledges nod to the custom-crafted bars.
+
+## Build plan (one brick at a time)
+
+1. ✅ Foundation: design system, header/footer, all five pages, estimator, request form
+2. Launch: Netlify (settings in `../netlify.toml`), point jedspartyservices.com at it
+3. Forms: send event requests through Netlify Forms instead of the visitor's email app
+4. Service area: county and town pages ("Bartenders in Fair Lawn, NJ") from `src/data/`
+5. Gallery: new photos of the custom bars and events
+6. Reviews: testimonials from past clients
+
+## Before launch
+
+- Confirm the bar-top partners' names in `src/site.ts` (`barTopPartners`).
+- New photos: run them through `../tools/grade_photo.py` so they match the warm matte look.

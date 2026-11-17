@@ -1,16 +1,29 @@
-# Netlify settings: plain static site, no build step.
+# Netlify settings. The site is an Astro project in website/ (same setup as RK).
 [build]
-  publish = "."
+  base = "website"
+  command = "npm run build"
+  publish = "dist"
 
-# Keep the developer tools and notes off the live site.
+[build.environment]
+  NODE_VERSION = "22"
+
+# The old Weebly site used .html addresses. Send them to the new clean addresses.
 [[redirects]]
-  from = "/tools/*"
-  to = "/404.html"
-  status = 404
-  force = true
+  from = "/services.html"
+  to = "/services"
+  status = 301
 
 [[redirects]]
-  from = "/README.md"
-  to = "/404.html"
-  status = 404
-  force = true
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/policies.html"
+  to = "/policies"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
